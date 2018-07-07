@@ -1,0 +1,417 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<sbml xmlns="http://www.sbml.org/sbml/level3/version1/core" level="3" version="1">
+  <model id="ffl" name="ffl">
+    <listOfCompartments>
+      <compartment sboTerm="SBO:0000410" id="default_compartment" spatialDimensions="3" size="1" constant="true"/>
+    </listOfCompartments>
+    <listOfSpecies>
+      <species id="g1" compartment="default_compartment" initialConcentration="1" hasOnlySubstanceUnits="false" boundaryCondition="true" constant="false"/>
+      <species id="m1" compartment="default_compartment" initialConcentration="0" hasOnlySubstanceUnits="false" boundaryCondition="false" constant="false"/>
+      <species id="p1" compartment="default_compartment" initialConcentration="0" hasOnlySubstanceUnits="false" boundaryCondition="false" constant="false"/>
+      <species id="g2" compartment="default_compartment" initialConcentration="1" hasOnlySubstanceUnits="false" boundaryCondition="true" constant="false"/>
+      <species id="m2" compartment="default_compartment" initialConcentration="0" hasOnlySubstanceUnits="false" boundaryCondition="false" constant="false"/>
+      <species id="p2" compartment="default_compartment" initialConcentration="0" hasOnlySubstanceUnits="false" boundaryCondition="false" constant="false"/>
+      <species id="g4" compartment="default_compartment" initialConcentration="1" hasOnlySubstanceUnits="false" boundaryCondition="true" constant="false"/>
+      <species id="m4" compartment="default_compartment" initialConcentration="0" hasOnlySubstanceUnits="false" boundaryCondition="false" constant="false"/>
+      <species id="p4" compartment="default_compartment" initialConcentration="0" hasOnlySubstanceUnits="false" boundaryCondition="false" constant="false"/>
+      <species id="g3" compartment="default_compartment" initialConcentration="1" hasOnlySubstanceUnits="false" boundaryCondition="true" constant="false"/>
+      <species id="m3" compartment="default_compartment" initialConcentration="0" hasOnlySubstanceUnits="false" boundaryCondition="false" constant="false"/>
+      <species id="p3" compartment="default_compartment" initialConcentration="0" hasOnlySubstanceUnits="false" boundaryCondition="false" constant="false"/>
+    </listOfSpecies>
+    <listOfParameters>
+      <parameter id="a_m1" value="20" constant="true"/>
+      <parameter id="L1" value="0.1" constant="true"/>
+      <parameter id="d_m1" value="0.6" constant="true"/>
+      <parameter id="a_p1" value="1" constant="true"/>
+      <parameter id="d_p1" value="0.09" constant="true"/>
+      <parameter id="v1" value="0" constant="false"/>
+      <parameter id="L2" value="0.1" constant="true"/>
+      <parameter id="d_m2" value="0.6" constant="true"/>
+      <parameter id="a_p2" value="1" constant="true"/>
+      <parameter id="d_p2" value="0.09" constant="true"/>
+      <parameter id="L3" value="0.1" constant="true"/>
+      <parameter id="d_m4" value="0.6" constant="true"/>
+      <parameter id="a_p4" value="1" constant="true"/>
+      <parameter id="d_p4" value="0.09" constant="true"/>
+      <parameter id="v2" value="0" constant="false"/>
+      <parameter id="L4" value="0.1" constant="true"/>
+      <parameter id="d_m3" value="0.6" constant="true"/>
+      <parameter id="a_p3" value="1" constant="true"/>
+      <parameter id="d_p3" value="0.09" constant="true"/>
+      <parameter id="h1" value="2" constant="true"/>
+      <parameter id="K1" value="0.2" constant="true"/>
+      <parameter id="Vm2" value="20" constant="true"/>
+      <parameter id="h2" value="2" constant="true"/>
+      <parameter id="K2" value="0.2" constant="true"/>
+      <parameter id="Vm3" value="20" constant="true"/>
+      <parameter id="h3" value="2" constant="true"/>
+      <parameter id="K3" value="0.2" constant="true"/>
+      <parameter id="a_m2" value="20" constant="true"/>
+      <parameter id="a_m3" value="20" constant="true"/>
+      <parameter id="a_m4" value="20" constant="true"/>
+      <parameter id="Vm1" value="20" constant="true"/>
+    </listOfParameters>
+    <listOfRules>
+      <assignmentRule variable="v1">
+        <math xmlns="http://www.w3.org/1998/Math/MathML">
+          <apply>
+            <divide/>
+            <apply>
+              <power/>
+              <ci> p1 </ci>
+              <ci> h1 </ci>
+            </apply>
+            <apply>
+              <plus/>
+              <apply>
+                <power/>
+                <ci> K1 </ci>
+                <ci> h1 </ci>
+              </apply>
+              <apply>
+                <power/>
+                <ci> p1 </ci>
+                <ci> h1 </ci>
+              </apply>
+            </apply>
+          </apply>
+        </math>
+      </assignmentRule>
+      <assignmentRule variable="v2">
+        <math xmlns="http://www.w3.org/1998/Math/MathML">
+          <apply>
+            <times/>
+            <apply>
+              <divide/>
+              <apply>
+                <times/>
+                <ci> Vm2 </ci>
+                <apply>
+                  <power/>
+                  <ci> p2 </ci>
+                  <ci> h2 </ci>
+                </apply>
+              </apply>
+              <apply>
+                <plus/>
+                <apply>
+                  <power/>
+                  <ci> K2 </ci>
+                  <ci> h2 </ci>
+                </apply>
+                <apply>
+                  <power/>
+                  <ci> p2 </ci>
+                  <ci> h2 </ci>
+                </apply>
+              </apply>
+            </apply>
+            <apply>
+              <divide/>
+              <apply>
+                <times/>
+                <ci> Vm3 </ci>
+                <apply>
+                  <power/>
+                  <ci> p4 </ci>
+                  <ci> h3 </ci>
+                </apply>
+              </apply>
+              <apply>
+                <plus/>
+                <apply>
+                  <power/>
+                  <ci> K3 </ci>
+                  <ci> h3 </ci>
+                </apply>
+                <apply>
+                  <power/>
+                  <ci> p4 </ci>
+                  <ci> h3 </ci>
+                </apply>
+              </apply>
+            </apply>
+          </apply>
+        </math>
+      </assignmentRule>
+    </listOfRules>
+    <listOfReactions>
+      <reaction id="trnsc_m1" reversible="false" fast="false">
+        <listOfReactants>
+          <speciesReference species="g1" stoichiometry="1" constant="true"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference species="m1" stoichiometry="1" constant="true"/>
+        </listOfProducts>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <plus/>
+              <apply>
+                <times/>
+                <ci> a_m1 </ci>
+                <ci> g1 </ci>
+              </apply>
+              <ci> L1 </ci>
+            </apply>
+          </math>
+        </kineticLaw>
+      </reaction>
+      <reaction id="deg_m1" reversible="false" fast="false">
+        <listOfReactants>
+          <speciesReference species="m1" stoichiometry="1" constant="true"/>
+        </listOfReactants>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <times/>
+              <ci> d_m1 </ci>
+              <ci> m1 </ci>
+            </apply>
+          </math>
+        </kineticLaw>
+      </reaction>
+      <reaction id="input" reversible="false" fast="false">
+        <listOfReactants>
+          <speciesReference species="m1" stoichiometry="1" constant="true"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference species="m1" stoichiometry="1" constant="true"/>
+          <speciesReference species="p1" stoichiometry="1" constant="true"/>
+        </listOfProducts>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <times/>
+              <ci> a_p1 </ci>
+              <ci> m1 </ci>
+            </apply>
+          </math>
+        </kineticLaw>
+      </reaction>
+      <reaction id="deg_p1" reversible="false" fast="false">
+        <listOfReactants>
+          <speciesReference species="p1" stoichiometry="1" constant="true"/>
+        </listOfReactants>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <times/>
+              <ci> d_p1 </ci>
+              <ci> p1 </ci>
+            </apply>
+          </math>
+        </kineticLaw>
+      </reaction>
+      <reaction id="trnsc_m2" reversible="false" fast="false">
+        <listOfReactants>
+          <speciesReference species="g2" stoichiometry="1" constant="true"/>
+          <speciesReference species="p1" stoichiometry="1" constant="true"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference species="p1" stoichiometry="1" constant="true"/>
+          <speciesReference species="m2" stoichiometry="1" constant="true"/>
+        </listOfProducts>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <plus/>
+              <apply>
+                <times/>
+                <ci> v1 </ci>
+                <ci> g2 </ci>
+              </apply>
+              <ci> L2 </ci>
+            </apply>
+          </math>
+        </kineticLaw>
+      </reaction>
+      <reaction id="deg_m2" reversible="false" fast="false">
+        <listOfReactants>
+          <speciesReference species="m2" stoichiometry="1" constant="true"/>
+        </listOfReactants>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <times/>
+              <ci> d_m2 </ci>
+              <ci> m2 </ci>
+            </apply>
+          </math>
+        </kineticLaw>
+      </reaction>
+      <reaction id="trnsl_p2" reversible="false" fast="false">
+        <listOfReactants>
+          <speciesReference species="m2" stoichiometry="1" constant="true"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference species="m2" stoichiometry="1" constant="true"/>
+          <speciesReference species="p2" stoichiometry="1" constant="true"/>
+        </listOfProducts>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <times/>
+              <ci> a_p2 </ci>
+              <ci> m2 </ci>
+            </apply>
+          </math>
+        </kineticLaw>
+      </reaction>
+      <reaction id="deg_p2" reversible="false" fast="false">
+        <listOfReactants>
+          <speciesReference species="p2" stoichiometry="1" constant="true"/>
+        </listOfReactants>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <times/>
+              <ci> d_p2 </ci>
+              <ci> p2 </ci>
+            </apply>
+          </math>
+        </kineticLaw>
+      </reaction>
+      <reaction id="trnsc_m4" reversible="false" fast="false">
+        <listOfReactants>
+          <speciesReference species="g4" stoichiometry="1" constant="true"/>
+          <speciesReference species="p1" stoichiometry="1" constant="true"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference species="p1" stoichiometry="1" constant="true"/>
+          <speciesReference species="m4" stoichiometry="1" constant="true"/>
+        </listOfProducts>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <plus/>
+              <apply>
+                <times/>
+                <ci> v1 </ci>
+                <ci> g4 </ci>
+              </apply>
+              <ci> L3 </ci>
+            </apply>
+          </math>
+        </kineticLaw>
+      </reaction>
+      <reaction id="deg_m4" reversible="false" fast="false">
+        <listOfReactants>
+          <speciesReference species="m4" stoichiometry="1" constant="true"/>
+        </listOfReactants>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <times/>
+              <ci> d_m4 </ci>
+              <ci> m4 </ci>
+            </apply>
+          </math>
+        </kineticLaw>
+      </reaction>
+      <reaction id="trnsl_p4" reversible="false" fast="false">
+        <listOfReactants>
+          <speciesReference species="m4" stoichiometry="1" constant="true"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference species="m4" stoichiometry="1" constant="true"/>
+          <speciesReference species="p4" stoichiometry="1" constant="true"/>
+        </listOfProducts>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <times/>
+              <ci> a_p4 </ci>
+              <ci> m4 </ci>
+            </apply>
+          </math>
+        </kineticLaw>
+      </reaction>
+      <reaction id="deg_p4" reversible="false" fast="false">
+        <listOfReactants>
+          <speciesReference species="p4" stoichiometry="1" constant="true"/>
+        </listOfReactants>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <times/>
+              <ci> d_p4 </ci>
+              <ci> p4 </ci>
+            </apply>
+          </math>
+        </kineticLaw>
+      </reaction>
+      <reaction id="trnsc_m3" reversible="false" fast="false">
+        <listOfReactants>
+          <speciesReference species="g3" stoichiometry="1" constant="true"/>
+          <speciesReference species="p2" stoichiometry="1" constant="true"/>
+          <speciesReference species="p4" stoichiometry="1" constant="true"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference species="p2" stoichiometry="1" constant="true"/>
+          <speciesReference species="p4" stoichiometry="1" constant="true"/>
+          <speciesReference species="m3" stoichiometry="1" constant="true"/>
+        </listOfProducts>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <plus/>
+              <apply>
+                <times/>
+                <ci> v2 </ci>
+                <ci> g3 </ci>
+              </apply>
+              <ci> L4 </ci>
+            </apply>
+          </math>
+        </kineticLaw>
+      </reaction>
+      <reaction id="deg_m3" reversible="false" fast="false">
+        <listOfReactants>
+          <speciesReference species="m3" stoichiometry="1" constant="true"/>
+        </listOfReactants>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <times/>
+              <ci> d_m3 </ci>
+              <ci> m3 </ci>
+            </apply>
+          </math>
+        </kineticLaw>
+      </reaction>
+      <reaction id="trnsl_p3" reversible="false" fast="false">
+        <listOfReactants>
+          <speciesReference species="m3" stoichiometry="1" constant="true"/>
+        </listOfReactants>
+        <listOfProducts>
+          <speciesReference species="m3" stoichiometry="1" constant="true"/>
+          <speciesReference species="p3" stoichiometry="1" constant="true"/>
+        </listOfProducts>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <times/>
+              <ci> a_p3 </ci>
+              <ci> m3 </ci>
+            </apply>
+          </math>
+        </kineticLaw>
+      </reaction>
+      <reaction id="output" reversible="false" fast="false">
+        <listOfReactants>
+          <speciesReference species="p3" stoichiometry="1" constant="true"/>
+        </listOfReactants>
+        <kineticLaw>
+          <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+              <times/>
+              <ci> d_p3 </ci>
+              <ci> p3 </ci>
+            </apply>
+          </math>
+        </kineticLaw>
+      </reaction>
+    </listOfReactions>
+  </model>
+</sbml>

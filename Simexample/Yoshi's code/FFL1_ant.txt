@@ -1,0 +1,67 @@
+// Created by libAntimony v2.9.4
+model *ffl1()
+
+  // Compartments and Species:
+  species $g1, m1, p_input, $g2, m2, p2, $g3, m3, p_output;
+
+  // Assignment Rules:
+  v1 := p_input^h1/(K1^h1 + p_input^h1);
+  v2 := (Vm2*p2^h2/(K2^h2 + p2^h2))*(Vm3*p_input^h3/(K3^h3 + p_input^h3));
+
+  // Reactions:
+  trnsc_m1: $g1 => m1; a_m1*g1 + L1;
+  deg_m1: m1 => ; d_m1*m1;
+  input: m1 => m1 + p_input; a_p_input*m1;
+  deg_p_input: p_input => ; d_p_input*p_input;
+  trnsc_m2: $g2 + p_input => p_input + m2; v1*g2 + L2;
+  deg_m2: m2 => ; d_m2*m2;
+  trnsl_p2: m2 => m2 + p2; a_p2*m2;
+  deg_p2: p2 => ; d_p2*p2;
+  trnsc_m3: $g3 + p2 + p_input => p2 + p_input + m3; v2*g3 + L3;
+  deg_m3: m3 => ; d_m3*m3;
+  trnsl_p_output: m3 => m3 + p_output; a_p_output*m3;
+  output: p_output => ; d_p_output*p_output;
+
+  // Species initializations:
+  g1 = 1;
+  m1 = 0;
+  p_input = 0;
+  g2 = 1;
+  m2 = 0;
+  p2 = 0;
+  g3 = 1;
+  m3 = 0;
+  p_output = 0;
+
+  // Variable initializations:
+  a_m1 = 20;
+  L1 = 0.1;
+  d_m1 = 0.6;
+  a_p_input = 1;
+  d_p_input = 0.09;
+  h1 = 2;
+  K1 = 0.2;
+  L2 = 0.1;
+  d_m2 = 0.6;
+  a_p2 = 1;
+  d_p2 = 0.09;
+  Vm2 = 20;
+  h2 = 2;
+  K2 = 0.2;
+  Vm3 = 20;
+  h3 = 2;
+  K3 = 0.2;
+  L3 = 0.1;
+  d_m3 = 0.6;
+  a_p_output = 1;
+  d_p_output = 0.09;
+  a_m2 = 20;
+  a_m3 = 20;
+  Vm1 = 20;
+
+  // Other declarations:
+  var v1, v2;
+  const a_m1, L1, d_m1, a_p_input, d_p_input, h1, K1, L2, d_m2, a_p2, d_p2;
+  const Vm2, h2, K2, Vm3, h3, K3, L3, d_m3, a_p_output, d_p_output, a_m2;
+  const a_m3, Vm1;
+end

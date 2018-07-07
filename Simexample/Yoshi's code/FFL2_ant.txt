@@ -1,0 +1,49 @@
+// Created by libAntimony v2.9.4
+model *FFL_repress()
+
+  // Compartments and Species:
+  species M1, M2, M3, P1, P2, P3;
+
+  // Reactions:
+  R0:  => M1; L1 + TM1 - dm1*M1;
+  R2:  => M2; L2 + TM2*1/(1 + (P1/k2)^H2) - dm2*M2;
+  R3:  => M3; L3 + (TM3*1/(1 + (P1/k3)^H3))*(P2/k3)^H3/(1 + (P2/k3)^H3) - dm3*M3;
+  R4:  => P1; Tr1*M1 - dp1*P1;
+  R5:  => P2; Tr2*M2 - dp2*P2;
+  R6:  => P3; Tr3*M3 - dp3*P3;
+
+  // Species initializations:
+  M1 = 0;
+  M2 = 0;
+  M3 = 0;
+  P1 = 0;
+  P2 = 0;
+  P3 = 0;
+
+  // Variable initializations:
+  L1 = 0.01;
+  L2 = 0.01;
+  L3 = 0.01;
+  k1 = 0.65;
+  k2 = 0.65;
+  k3 = 0.65;
+  dm1 = 0.5;
+  dm2 = 0.5;
+  dm3 = 0.5;
+  dp1 = 0.5;
+  dp2 = 0.5;
+  dp3 = 0.5;
+  TM1 = 15;
+  TM2 = 15;
+  TM3 = 15;
+  Tr1 = 0.5;
+  Tr2 = 0.5;
+  Tr3 = 0.5;
+  H1 = 1;
+  H2 = 1;
+  H3 = 2;
+
+  // Other declarations:
+  const L1, L2, L3, k1, k2, k3, dm1, dm2, dm3, dp1, dp2, dp3, TM1, TM2, TM3;
+  const Tr1, Tr2, Tr3, H1, H2, H3;
+end
