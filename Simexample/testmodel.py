@@ -68,7 +68,7 @@ r = te.loada('''
      end
 ''')
 
-a = r.draw(layout='circo')
+#a = r.draw(layout='circo')
 
 #%% ## Functions ##
 
